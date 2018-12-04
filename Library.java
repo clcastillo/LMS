@@ -11,13 +11,8 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Library implements Serializable, Comparable<Library> {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8037046062196866724L;
 	private String filename = "librarycatalog.txt";
-	//protected static ArrayList<Admin> adminList = new ArrayList<Admin>();
 	protected static ArrayList<LibraryCat> catalogList = new ArrayList<LibraryCat>();
 
 	/*----Following Singleton Design Pattern (Lazy Instantiation)------------*/
@@ -41,8 +36,6 @@ public class Library implements Serializable, Comparable<Library> {
 			e.printStackTrace();
 		}
 	}
-
-	//@SuppressWarnings({ "unchecked", "rawtypes" })
 	@SuppressWarnings("unchecked")
 	public void deserialize() {
 		File f = new File(filename);

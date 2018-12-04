@@ -3,18 +3,11 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Book extends LibraryCat {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3497279689453444576L;
-	private String bookTitle, bookAuthor, iSBN, checkedOut, checkedPerson;
+	private String bookTitle, bookAuthor, iSBN, checkedOut;
 	LibraryCat libInstance = LibraryCat.getInstance();
-	// LibraryCat libInstance = LibraryCat.getInstance();
 
 	Book(String bookTitle, String bookAuthor, String iSBN, String checkedOut) throws IOException {
-		// super( bookTitle, bookAuthor, iSBN, checkedOut);
-
 		this.bookTitle = bookTitle;
 		this.bookAuthor = bookAuthor;
 		this.iSBN = iSBN;
@@ -28,7 +21,6 @@ public class Book extends LibraryCat {
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Title:");
 		bookTitle = keyboard.nextLine().toUpperCase();
-		// bookTitle = bookTitle.toUpperCase();
 		System.out.println("Author: ");
 		bookAuthor = keyboard.nextLine().toUpperCase();
 		System.out.println("ISBN: ");
@@ -45,7 +37,6 @@ public class Book extends LibraryCat {
 		try {
 			libInstance = new Book(bookTitle, bookAuthor, iSBN, checkedOut);
 			catalogList.add(libInstance);
-			// list.add(e);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -58,6 +49,14 @@ public class Book extends LibraryCat {
 
 	public String getAuthor() {
 		return bookAuthor;
+	}
+//returns true if its checked out
+	public boolean getCheckedStatus() {
+		if (checkedOut.equals("Checked Out")) {
+			return true;
+		} else
+			return false;
+
 	}
 
 	public void setCheckedOut() {
@@ -75,7 +74,7 @@ public class Book extends LibraryCat {
 	public String toString() {
 		String str;
 		str = "Book: " + "    Title: " + bookTitle + "    Author:" + bookAuthor + "    ISBN:" + iSBN + ""
-				+ "    Checked Out: " + checkedOut;
+				+ "    Status: " + checkedOut;
 		return str;
 	}
 

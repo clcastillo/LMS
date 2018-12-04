@@ -15,7 +15,6 @@ class Main {
 		System.out.println("3- Login Administrator"); // Administration has access only
 		System.out.println("-----------------------------------------\n");
 		int choice = 0;
-		int userChoice = 0;
 		choice = takeInput(0, 4);
 		if (choice == 1) {
 			int memberChoice;
@@ -25,25 +24,23 @@ class Main {
 			do {
 				memberChoice = userInstance.prompt();
 				if (memberChoice == 1) {
-					// Search an Item
-					userInstance.searchTitle();
+					userInstance.searchTitle();// Search an Item
 				} else if (memberChoice == 2) {
-//Search for an Author
-
+					userInstance.searchAuthor();// Search for an Author
 				} else if (memberChoice == 3) {
-//4- All books
-					userInstance.getItems();
-
+					userInstance.getItems();// All books
 				} else if (memberChoice == 4) {
-					userInstance.checkOut();
-					// Check out an item
-				} else if (memberChoice == 6) {
-					userInstance.returnItem();
-//4- Return a book
+					userInstance.getItems();
+					userInstance.checkOut();// Check out an item
+				} else if (memberChoice == 5) {
+					userInstance.getItems();
+					userInstance.returnItem();// Return a book
 				}
-			} while (memberChoice != 5);
+			} while (memberChoice != 6);
+			libInstance.serialize();
+			System.out.println("Goodbye!");
 		} else if (choice == 3) {
-			int option, count, checkedOutChoice, adminChoice, classChoice;
+			int classChoice;
 			System.out.println("--------------------------------------------------------");
 			System.out.println("\tWelcome to Admin's Portal");
 			System.out.println("--------------------------------------------------------");
@@ -51,16 +48,13 @@ class Main {
 				Admin adminInstance = new Admin();
 				classChoice = adminInstance.prompt();
 				if (classChoice == 1) {
-					// Add an item
-					adminInstance.addItem();
+					adminInstance.addItem(); // Add an item
 				} else if (classChoice == 2) {
-					// ("2- Delete Item");
-					adminInstance.deleteItem();
+					adminInstance.deleteItem();// Delete Item
 				} else if (classChoice == 3) {
-					// 3- View Issued Books History
+					adminInstance.issuedItems(); // View Issued Books History
 				} else if (classChoice == 4) {
-					// 4- View All Books in Library
-					adminInstance.getItems();
+					adminInstance.getItems();// View All Books in Library
 				}
 			} while (classChoice != 5);
 			libInstance.serialize();
@@ -71,7 +65,6 @@ class Main {
 			libInstance.serialize();
 
 			System.out.println("Goodbye!");
-			// break;
 		}
 	}
 
@@ -82,9 +75,7 @@ class Main {
 
 		while (true) {
 			System.out.println("\nEnter Choice: ");
-
 			choice = input.next();
-
 			if ((!choice.matches(".*[a-zA-Z]+.*"))
 					&& (Integer.parseInt(choice) > min && Integer.parseInt(choice) < max)) {
 				return Integer.parseInt(choice);

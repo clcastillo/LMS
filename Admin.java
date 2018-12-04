@@ -2,10 +2,6 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class Admin extends Library {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5441115714932764431L;
 	Scanner keyboard = new Scanner(System.in);
 	Library libCatalogInstance = LibraryCat.getInstance();
@@ -55,6 +51,16 @@ public class Admin extends Library {
 		int delete = deleteNumb - 1;
 		catalogList.remove(delete);
 		System.out.println("Item deleted");
+	}
+
+	public void issuedItems() {
+		System.out.println("Issued Items: ");
+		for (int i = 0; i < catalogList.size(); i++) {
+			if (((Book) catalogList.get(i)).getCheckedStatus() == true) {
+				System.out.println(catalogList.get(i));
+			}
+		}
+
 	}
 
 	public void getItems() {

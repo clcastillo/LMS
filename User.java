@@ -2,33 +2,26 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 public class User extends Library {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -16820323213541553L;
-	// private static final long serialVersionUID = -1626403704913725407L;
 	Scanner keyboard = new Scanner(System.in);
-
 	int userChoice;
+	boolean status;
 
 	public int prompt() {
 		do {
+			System.out.println();
 			System.out.println("Following Functionalities are available: \n");
 			System.out.println("1- Search an Item");
 			System.out.println("2- Search for an Author");
 			System.out.println("3- View all items");
-			System.out.println("3- Check out an item");
-			System.out.println("4- Return a book");
-			System.out.println("5- Logout");
+			System.out.println("4- Check out an item");
+			System.out.println("5- Return a book");
+			System.out.println("6- Logout");
 			System.out.println("---------------------------------------------");
-			userChoice = takeInput(0, 6);
+			userChoice = takeInput(0, 7);
 			return userChoice;
-		} while (userChoice != 5);
-
+		} while (userChoice != 6);
 	}
-
-	boolean status;
-
 	public Item searchTitle() {
 		System.out.println("Enter item title to search:");
 		String title = keyboard.nextLine().toUpperCase();
