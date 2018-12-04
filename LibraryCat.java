@@ -14,9 +14,18 @@ public class LibraryCat extends Library {
 	protected int returnDate;
 
 	protected Book books;
-	
+	//protected static ArrayList<LibraryCat> list = new ArrayList<LibraryCat>();
+
 	/*----Following Singleton Design Pattern (Lazy Instantiation)------------*/
 	private static LibraryCat obj = null;
+
+	public LibraryCat(String bookTitle, String bookAuthor, String iSBN2, String checkedOut2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public LibraryCat() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public static LibraryCat getInstance() {
 		if (obj == null) {
