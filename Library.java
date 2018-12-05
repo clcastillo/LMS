@@ -64,14 +64,11 @@ public class Library implements Serializable, Comparable<Library> {
 
 		while (true) {
 			System.out.println("\nEnter Choice: ");
-
 			choice = input.next();
-
 			if ((!choice.matches(".*[a-zA-Z]+.*"))
 					&& (Integer.parseInt(choice) > min && Integer.parseInt(choice) < max)) {
 				return Integer.parseInt(choice);
 			}
-
 			else
 				System.out.println("\nInvalid Input.");
 		}

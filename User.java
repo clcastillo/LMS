@@ -5,7 +5,7 @@ public class User extends Library {
 	private static final long serialVersionUID = -16820323213541553L;
 	Scanner keyboard = new Scanner(System.in);
 	int userChoice;
-	boolean status;
+	boolean status=false;
 
 	public int prompt() {
 		do {
@@ -22,7 +22,7 @@ public class User extends Library {
 			return userChoice;
 		} while (userChoice != 6);
 	}
-	public Item searchTitle() {
+	public String searchTitle() {
 		System.out.println("Enter item title to search:");
 		String title = keyboard.nextLine().toUpperCase();
 		for (int i = 0; i < catalogList.size(); i++) {
@@ -31,27 +31,28 @@ public class User extends Library {
 				System.out.println("Its in the library: Item " + (i + 1));
 				status = true;
 			}
-		}
-		if (status = false) {
+		}if(status==false) {
 			System.out.println("Sorry, we don't have that item");
 		}
 		return null;
 
 	}
 
-	public Item searchAuthor() {
+	public String searchAuthor() {
 		System.out.println("Enter item author to search:");
 		String author = keyboard.nextLine().toUpperCase();
 		for (int i = 0; i < catalogList.size(); i++) {
-			// System.out.println(((Book) catalogList.get(i)).getTitle() + "= " + title);
 			if (((Book) catalogList.get(i)).getAuthor().equals(author)) {
 				System.out.println("Its in the library: Item " + (i + 1));
+				status=true;
 			}
+		}if(status==false) {
+			System.out.println("Sorry, we don't have that author");
 		}
 		return null;
 	}
 
-	public Item checkOut() {
+	public String checkOut() {
 		System.out.println("Enter the item number to check out:");
 		int checkOut = keyboard.nextInt();
 		((Book) catalogList.get(checkOut - 1)).setCheckedOut();
@@ -59,7 +60,7 @@ public class User extends Library {
 		return null;
 	}
 
-	public Item returnItem() {
+	public String returnItem() {
 		System.out.println("Enter the item number to return:");
 		int returnItem = keyboard.nextInt();
 		((Book)catalogList.get(returnItem - 1)).setReturned();

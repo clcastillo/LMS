@@ -4,9 +4,7 @@ import java.util.Scanner;
 public class Admin extends Library {
 	private static final long serialVersionUID = 5441115714932764431L;
 	Scanner keyboard = new Scanner(System.in);
-	Library libCatalogInstance = LibraryCat.getInstance();
-	String name;
-	int id;
+	//Library libCatalogInstance = LibraryCat.getInstance();
 
 	public int prompt() {
 		System.out.println();
