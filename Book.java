@@ -1,81 +1,68 @@
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Scanner;
+import java.util.regex.Pattern;
 
-public class Book extends LibraryCat {
+public class Book extends Item implements Serializable
+{
 	private static final long serialVersionUID = 3497279689453444576L;
-	private String bookTitle, bookAuthor, iSBN, checkedOut;
-	LibraryCat libInstance = LibraryCat.getInstance();
+	private String author, isbn;
+	private boolean isbnMatches;
+	//VALID ISBN: 0-940016-64-8 or 978-0-940016-64-4 17
+	Pattern isbn10 = Pattern.compile("\\d{1}-\\d{6}-\\d{2}-\\d{1}");
+	Pattern isbn13 = Pattern.compile("\\d{3}-\\d{1}-\\d{6}-\\d{2}-\\d{1}");
 
-	Book(String bookTitle, String bookAuthor, String iSBN, String checkedOut) throws IOException {
-		this.bookTitle = bookTitle;
-		this.bookAuthor = bookAuthor;
-		this.iSBN = iSBN;
-		this.checkedOut = checkedOut;
+	Book(String id, String bookTitle, String bookAuthor, String iSBN, String checkedOut) throws IOException {
+		title= bookTitle;
+		isbn= iSBN;
+		chkout= checkedOut;
+		author = bookAuthor;
+		isbn = iSBN;
+		libID= id;
 	}
 
-	public Book() {
-	}
+	public Book() 
+	{}
 
-	public void requestInfo() {
-		Scanner keyboard = new Scanner(System.in);
-		System.out.println("Title:");
-		bookTitle = keyboard.nextLine().toUpperCase();
-		System.out.println("Author: ");
-		bookAuthor = keyboard.nextLine().toUpperCase();
-		System.out.println("ISBN: ");
-		iSBN = keyboard.next();
-		System.out.println("Checked Out: \n 1. Yes 2. No");
-		int checkedOutChoice = keyboard.nextInt();
-		checkedOut = checkedOut(checkedOutChoice);
-		if (saveYorN() == 1) {
-			addItem();
-		}
-	}
-
-	public void addItem() {
+	public void addBook() {
 		try {
-			libInstance = new Book(bookTitle, bookAuthor, iSBN, checkedOut);
-			catalogList.add(libInstance);
+			libInstance = new Book(libID, title, author, isbn, chkout);
+			addItem(libInstance);
+			//catalogList.add(libInstance);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
+	public void requestBook()
+	{
+		
+		requestInfo();
+		System.out.print("Author: ");
+		author = keyboard.nextLine().toUpperCase();
+		do
+		{
+			System.out.print("ISBN: ");
+			isbn = keyboard.next();
+			isbnMatches= (isbn13.matcher(isbn).matches() || isbn10.matcher(isbn).matches());
+			if(!isbnMatches)
+				System.out.println("Please enter a valid ISBN10 or ISBN13 value, including dashes");
+		}while(!isbnMatches);
 
-	public String getTitle() {
-		return bookTitle;
+		System.out.print("Checked Out: \n 1. Yes 2. No");
+		chkout = checkedOut(keyboard.nextInt());
+		if (saveYorN()==1) 
+			addBook();
 	}
-
+	
 	public String getAuthor() {
-		return bookAuthor;
+	
+		return author;
 	}
-//returns true if its checked out
-	public boolean getCheckedStatus() {
-		if (checkedOut.equals("Checked Out")) {
-			return true;
-		} else
-			return false;
-
-	}
-
-	public void setCheckedOut() {
-		if (checkedOut == "Checked Out") {
-			System.out.println("This item is already checked out");
-		} else {
-			this.checkedOut = "Checked Out";
-		}
-	}
-
-	public void setReturned() {
-		this.checkedOut = "Not checked Out";
-	}
-
-	public String toString() {
-		String str;
-		str = "Book: " + "    Title: " + bookTitle + "    Author:" + bookAuthor + "    ISBN:" + iSBN + ""
-				+ "    Status: " + checkedOut;
-		return str;
+	 
+	public String toString() 
+	{	
+		return String.format("Book: Title: %20s, Author: %20s, ISBN: %15s, Status: %15s",
+				title.substring(0, Math.min(title.length(), 20)), author.substring(0, Math.min(author.length(), 20)), isbn, chkout); 
 	}
 
 }

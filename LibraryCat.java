@@ -1,7 +1,8 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LibraryCat extends Library {
+public class LibraryCat extends Library implements Serializable
+{
 	private static final long serialVersionUID = 8836651487362500513L;
 	protected String title;
 	protected String author;

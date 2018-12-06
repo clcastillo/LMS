@@ -1,11 +1,12 @@
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class User extends Library {
+public class User extends Library implements Serializable
+{
 	private static final long serialVersionUID = -16820323213541553L;
 	Scanner keyboard = new Scanner(System.in);
 	int userChoice;
-	boolean status=false;
+	boolean status;
 
 	public int prompt() {
 		do {
@@ -22,8 +23,8 @@ public class User extends Library {
 			return userChoice;
 		} while (userChoice != 6);
 	}
-	public String searchTitle() {
-		System.out.println("Enter item title to search:");
+	public Item searchTitle() {
+		System.out.print("Enter item title to search:");
 		String title = keyboard.nextLine().toUpperCase();
 		for (int i = 0; i < catalogList.size(); i++) {
 			// System.out.println(((Book) catalogList.get(i)).getTitle() + "= " + title);
@@ -31,43 +32,40 @@ public class User extends Library {
 				System.out.println("Its in the library: Item " + (i + 1));
 				status = true;
 			}
-		}if(status==false) {
+		}
+		if (status = false) {
 			System.out.println("Sorry, we don't have that item");
 		}
 		return null;
 
 	}
 
-	public String searchAuthor() {
+	public Item searchAuthor() {
 		System.out.println("Enter item author to search:");
 		String author = keyboard.nextLine().toUpperCase();
 		for (int i = 0; i < catalogList.size(); i++) {
+			// System.out.println(((Book) catalogList.get(i)).getTitle() + "= " + title);
 			if (((Book) catalogList.get(i)).getAuthor().equals(author)) {
 				System.out.println("Its in the library: Item " + (i + 1));
-				status=true;
 			}
-		}if(status==false) {
-			System.out.println("Sorry, we don't have that author");
 		}
 		return null;
 	}
 
-	public String checkOut() {
+	public Item checkOut() {
 		System.out.println("Enter the item number to check out:");
-		int checkOut = keyboard.nextInt();
-		if (((Book) catalogList.get(checkOut - 1)).getCheckedStatus()) {
-			System.out.println("This item is already checked out.");
-		} else {
-			((Book) catalogList.get(checkOut - 1)).setCheckedOut();
-			System.out.println("Done.");
-		}
+		//int checkOut = keyboard.nextInt();
+		userChoice= keyboard.nextInt();
+		((Book) catalogList.get(userChoice - 1)).setCheckedOut();
+		System.out.println("Done.");
 		return null;
 	}
 
-	public String returnItem() {
-		System.out.println("Enter the item number to return:");
-		int returnItem = keyboard.nextInt();
-		((Book)catalogList.get(returnItem - 1)).setReturned();
+	public Item returnItem() {
+		System.out.print("Enter the item number to return:");
+		//int returnItem = keyboard.nextInt();
+		userChoice= keyboard.nextInt();
+		((Book)catalogList.get(userChoice- 1)).setReturned();
 		System.out.println("Done.");
 
 		return null;

@@ -1,10 +1,16 @@
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class Admin extends Library {
+public class Admin extends Library implements Serializable 
+{
+	
+	public static final String PASSWORD= "adminlib";
+	
 	private static final long serialVersionUID = 5441115714932764431L;
 	Scanner keyboard = new Scanner(System.in);
-	//Library libCatalogInstance = LibraryCat.getInstance();
+	Library libCatalogInstance = LibraryCat.getInstance();
+	String name, password;
+	int id, choice;
 
 	public int prompt() {
 		System.out.println();
@@ -16,23 +22,35 @@ public class Admin extends Library {
 		System.out.println("4- View All Books in Library");
 		System.out.println("5- Logout");
 		System.out.println("---------------------------------------------");
-		int userChoice = takeInput(0, 6);
-		return userChoice;
+		choice = takeInput(0, 6);
+		return choice;
 
+	}
+	
+	public boolean hasAccess()
+	{
+		System.out.print("Please enter the admin password: ");
+		password= keyboard.next();
+		if (password.equals(PASSWORD))
+			return true;
+		else
+			return false;
 	}
 
 	public void addItem() {
 		System.out.println("1- Add Book");
 		System.out.println("2- Add Movie");
 		System.out.println("---------------------------------------------");
-		int adminChoice = keyboard.nextInt();
+		choice = keyboard.nextInt();
 
-		if (adminChoice == 1) {
+		if (choice == 1) {
 			Book addBook = new Book();
-			addBook.requestInfo();
+			addBook.requestBook();
 		}
-		if (adminChoice == 2) {
-
+		if (choice == 2) 
+		{
+			Movie addMovie= new Movie();
+			addMovie.requestMovie();
 		}
 	}
 
@@ -40,15 +58,22 @@ public class Admin extends Library {
 		getItems();
 
 		System.out.println();
-		if (catalogList.size() == 0) {
-			System.out.println("Error library has no items");
+		if (catalogList.size() == 0) 
+		{
+			System.out.println("Error: library has no items");
 		}
-		System.out.println("Select the number you want to delete");
-
-		int deleteNumb = keyboard.nextInt();
-		int delete = deleteNumb - 1;
-		catalogList.remove(delete);
-		System.out.println("Item deleted");
+		else
+		{
+			System.out.println("Select the number you want to delete, or enter -1 to exit: ");
+			choice= keyboard.nextInt();
+			//int deleteNumb = keyboard.nextInt();
+			//int delete = deleteNumb - 1;
+			while(choice != -1)
+			{
+				catalogList.remove(choice);
+				System.out.println("Item deleted");
+			}
+		}
 	}
 
 	public void issuedItems() {
