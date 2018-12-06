@@ -55,8 +55,12 @@ public class User extends Library {
 	public String checkOut() {
 		System.out.println("Enter the item number to check out:");
 		int checkOut = keyboard.nextInt();
-		((Book) catalogList.get(checkOut - 1)).setCheckedOut();
-		System.out.println("Done.");
+		if (((Book) catalogList.get(checkOut - 1)).getCheckedStatus()) {
+			System.out.println("This item is already checked out.");
+		} else {
+			((Book) catalogList.get(checkOut - 1)).setCheckedOut();
+			System.out.println("Done.");
+		}
 		return null;
 	}
 
