@@ -45,7 +45,7 @@ public class Movie extends Item implements Serializable
 	}
 	public String toString() 
 	{	
-		return String.format("Movie- ID: %6s Title: %20s, Director: %20s, Genre: %10s, Status: %15s",
-				libID, title.substring(0, Math.min(title.length(), 20)), director.substring(0, Math.min(author.length(), 20)), genre.substring(0,  Math.min(genre.length(),  10)), chkout); 
+		return String.format("Movie- ID: %6s, Title: %20s, Director: %20s, Genre: %10s, Status: %15s",
+				libID, title.substring(0, Math.min(title.length(), 20)), director.substring(0, Math.min(director.length(), 20)), genre.substring(0,  Math.min(genre.length(),  10)), chkout); 
 	}
 }
