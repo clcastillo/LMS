@@ -78,14 +78,14 @@ public class Library implements Serializable, Comparable<Library> {
 
 	}
 
-	public static String checkedOut(int choice) {
-		String str;
+	public static String checkedOut(int choice) 
+	{
 		if (choice == 1)
-			return str = "Checked Out";
+			return "Checked Out";
 		else if (choice == 2)
-			return str = "Not checked Out";
+			return "Not checked Out";
 		else
-			return str = "Invalid";
+			return "Invalid";
 	}
 
 	public static int saveYorN() {
