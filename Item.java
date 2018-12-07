@@ -16,6 +16,11 @@ public abstract class Item extends LibraryCat implements Serializable
 	{
 		return title;
 	}
+	
+	public String getID()
+	{
+		return libID;
+	}
 
 	public void setCheckedOut() {
 		if (chkout == "Checked Out") {
