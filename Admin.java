@@ -8,9 +8,8 @@ public class Admin extends Library implements Serializable
 	
 	private static final long serialVersionUID = 5441115714932764431L;
 	Scanner keyboard = new Scanner(System.in);
-	Library libCatalogInstance = LibraryCat.getInstance();
-	String name, password;
-	int id, choice;
+	String password;
+	int choice;
 
 	public int prompt() {
 		System.out.println();
@@ -67,11 +66,9 @@ public class Admin extends Library implements Serializable
 		{
 			System.out.print("Select the number you want to delete, or enter -1 to exit: ");
 			choice= keyboard.nextInt();
-			//int deleteNumb = keyboard.nextInt();
-			//int delete = deleteNumb - 1;
-			while(choice != -1)
+			if (choice != -1)
 			{
-				catalogList.remove(choice);
+				catalogList.remove(choice - 1);
 				System.out.println("Item deleted");
 			}
 		}
@@ -91,7 +88,7 @@ public class Admin extends Library implements Serializable
 		int c = 1;
 		System.out.println("Library Catalog Items: ");
 		for (Library i : Library.catalogList) {
-			System.out.println(c + "." + i);
+			System.out.println(c + ". " + i);
 			c++;
 		}
 	}

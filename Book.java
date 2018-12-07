@@ -27,7 +27,6 @@ public class Book extends Item implements Serializable
 		try {
 			libInstance = new Book(libID, title, author, isbn, chkout);
 			addItem(libInstance);
-			//catalogList.add(libInstance);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -45,7 +44,8 @@ public class Book extends Item implements Serializable
 			isbn = keyboard.next();
 			isbnMatches= (isbn13.matcher(isbn).matches() || isbn10.matcher(isbn).matches());
 			if(!isbnMatches)
-				System.out.print("Please enter a valid ISBN10 or ISBN13 value, including dashes");
+				System.out.print("Please enter a valid ISBN10 or ISBN13 value, including dashes\n"
+					+ "Example: 0-940016-64-8 or 978-0-940016-64-4 17\n");
 		}while(!isbnMatches);
 
 		System.out.print("Checked Out (1. Yes 2. No): ");

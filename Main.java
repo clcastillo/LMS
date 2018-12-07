@@ -1,12 +1,10 @@
-import java.io.Serializable;
 import java.util.Scanner;
 
-class Main //implements Serializable
+class Main
 {
 	public static void main(String args[]) 
 	{
-		int choice = 0;
-		Scanner keyboard = new Scanner(System.in);
+		int choice;
 		Library libInstance = Library.getInstance();
 		libInstance.deserialize();
 
@@ -17,7 +15,7 @@ class Main //implements Serializable
 			System.out.println("--------------------------------------------------------");
 			System.out.println("Following Functionalities are available: \n");
 			System.out.println("1- User Login");
-			System.out.println("2- Admin Login "); // Administration has access only
+			System.out.println("2- Admin Login ");
 			System.out.println("3- Exit");
 			System.out.println("-----------------------------------------\n");
 			
@@ -35,22 +33,22 @@ class Main //implements Serializable
 				{
 					memberChoice = userInstance.prompt();
 					if (memberChoice == 1) 
-						userInstance.searchTitle();// Search an Item
+						userInstance.searchTitle();
 					else if (memberChoice == 2) 
 						userInstance.searchID();
 					else if (memberChoice == 3) 
-						userInstance.searchAuthor();// Search for an Author
+						userInstance.searchAuthor();
 					else if (memberChoice == 4) 
-						userInstance.getItems();// All books
+						userInstance.getItems();
 					else if (memberChoice == 5) 
 					{
 						userInstance.getItems();
-						userInstance.checkOut();// Check out an item
+						userInstance.checkOut();
 					}
 					else if (memberChoice == 6) 
 					{
 						userInstance.getItems();
-						userInstance.returnItem();// Return a book
+						userInstance.returnItem();
 					}
 				} while (memberChoice != 7);
 				libInstance.serialize();
@@ -71,13 +69,13 @@ class Main //implements Serializable
 						classChoice = adminInstance.prompt();
 						
 						if (classChoice == 1) 
-							adminInstance.addItem(); // Add an item
+							adminInstance.addItem();
 						else if (classChoice == 2) 
-							adminInstance.deleteItem();// Delete Item
+							adminInstance.deleteItem();
 						else if (classChoice == 3) 
-							adminInstance.issuedItems(); // View Issued Books History
+							adminInstance.issuedItems();
 						else if (classChoice == 4) 
-							adminInstance.getItems();// View All Books in Library
+							adminInstance.getItems();
 					} while (classChoice != 5);
 					libInstance.serialize();
 					System.out.println("RETURNING TO MAIN MENU...");
@@ -86,14 +84,12 @@ class Main //implements Serializable
 				else
 				{
 					System.out.println("ACCESS DENIED. PLEASE SEE AN ADMINISTRATOR.");
-					classChoice= 5;
 				}
 			} 
 			
 		}while (choice != 3);
 		if(choice==3)
 		{
-			//libInstance.serialize();
 			System.out.println("Goodbye!");
 		}
 	}
@@ -117,31 +113,5 @@ class Main //implements Serializable
 				System.out.println("\nInvalid Input.");
 		}
 	}
-
-	public static String checkedOut(int choice) 
-	{
-		String str;
-		if (choice == 1)
-			return str = "Checked Out";
-		else if (choice == 2)
-			return str = "Not checked Out";
-		else
-			return str = "Invalid";
-	}
-
-	public static int saveYorN() 
-	{
-		Scanner keyboard = new Scanner(System.in);
-		String saveStr;
-		char saveChar;
-		System.out.print("Save (y/n): ");
-		saveStr = keyboard.next();
-		saveChar = saveStr.charAt(0);
-		if (saveChar == 'N' || saveChar == 'n')
-			return 0;
-		else
-			return 1;
-	}
-
 }
 
