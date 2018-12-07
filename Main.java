@@ -29,7 +29,7 @@ class Main //implements Serializable
 				User userInstance = new User();
 	
 				System.out.println("--------------------------------------------------------");
-				System.out.println("\tWelcome to the User Portal");
+				System.out.println("\tWelcome to User Portal");
 				System.out.println("--------------------------------------------------------");
 				do 
 				{
@@ -64,7 +64,7 @@ class Main //implements Serializable
 				if(adminInstance.hasAccess())
 				{
 					System.out.println("--------------------------------------------------------");
-					System.out.println("\tWelcome to Admin's Portal");
+					System.out.println("\tWelcome to Admin Portal");
 					System.out.println("--------------------------------------------------------");
 					do 
 					{
@@ -134,7 +134,7 @@ class Main //implements Serializable
 		Scanner keyboard = new Scanner(System.in);
 		String saveStr;
 		char saveChar;
-		System.out.println("Save (y/n)");
+		System.out.print("Save (y/n): ");
 		saveStr = keyboard.next();
 		saveChar = saveStr.charAt(0);
 		if (saveChar == 'N' || saveChar == 'n')

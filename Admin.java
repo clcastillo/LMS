@@ -18,8 +18,8 @@ public class Admin extends Library implements Serializable
 
 		System.out.println("1- Add Item");
 		System.out.println("2- Delete Item");
-		System.out.println("3- View Issued Books History");
-		System.out.println("4- View All Books in Library");
+		System.out.println("3- View Issued Items History");
+		System.out.println("4- View All Items in Library");
 		System.out.println("5- Logout");
 		System.out.println("---------------------------------------------");
 		choice = takeInput(0, 6);
@@ -41,6 +41,7 @@ public class Admin extends Library implements Serializable
 		System.out.println("1- Add Book");
 		System.out.println("2- Add Movie");
 		System.out.println("---------------------------------------------");
+		System.out.print("Enter Choice: ");
 		choice = keyboard.nextInt();
 
 		if (choice == 1) {
@@ -64,7 +65,7 @@ public class Admin extends Library implements Serializable
 		}
 		else
 		{
-			System.out.println("Select the number you want to delete, or enter -1 to exit: ");
+			System.out.print("Select the number you want to delete, or enter -1 to exit: ");
 			choice= keyboard.nextInt();
 			//int deleteNumb = keyboard.nextInt();
 			//int delete = deleteNumb - 1;

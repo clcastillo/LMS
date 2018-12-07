@@ -47,7 +47,7 @@ public abstract class Item extends LibraryCat implements Serializable
 	}
 	protected void requestInfo() 
 	{
-		System.out.print("Title:");
+		System.out.print("Title: ");
 		title = keyboard.nextLine().toUpperCase();
 		do
 		{

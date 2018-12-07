@@ -63,7 +63,7 @@ public class Library implements Serializable, Comparable<Library> {
 		Scanner input = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("\nEnter Choice: ");
+			System.out.print("\nEnter Choice: ");
 
 			choice = input.next();
 
@@ -92,7 +92,7 @@ public class Library implements Serializable, Comparable<Library> {
 		Scanner keyboard = new Scanner(System.in);
 		String saveStr;
 		char saveChar;
-		System.out.println("Save (y/n)");
+		System.out.print("Save (y/n): ");
 		saveStr = keyboard.next();
 		saveChar = saveStr.charAt(0);
 		if (saveChar == 'N' || saveChar == 'n')

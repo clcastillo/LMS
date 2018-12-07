@@ -18,7 +18,7 @@ public class User extends Library implements Serializable
 			System.out.println("3- Search books by Author");
 			System.out.println("4- View all items");
 			System.out.println("5- Check out an item");
-			System.out.println("6- Return a book");
+			System.out.println("6- Return an item");
 			System.out.println("7- Logout");
 			
 			System.out.println("---------------------------------------------");
@@ -28,49 +28,51 @@ public class User extends Library implements Serializable
 	}
 	public void searchTitle() 
 	{
-		System.out.print("Enter item title to search:");
+		status = false;
+		System.out.print("Enter item title to search: ");
 		input = keyboard.nextLine().toUpperCase();
 		for (int i = 0; i < catalogList.size(); i++) 
 		{
 			if (((Item) catalogList.get(i)).getTitle().equals(input)) 
 			{
-				System.out.println("Its in the library: Item " + (i + 1));
+				System.out.println("It's in the library: Item " + (i + 1));
 				status = true;
 			}
 		}
 		
-		if (status = false) 
-			System.out.println("Sorry, we don't have that item");
+		if (status == false)
+			System.out.println("Sorry, we don't have that item.");
 	}
 
 	public void searchAuthor() {
-		System.out.println("Enter author to search:");
+		System.out.print("Enter author to search: ");
 		input = keyboard.nextLine().toUpperCase();
 		for (int i = 0; i < catalogList.size(); i++) 
 		{
-			if (((Book) catalogList.get(i)).getAuthor().equals(input)) 
-				System.out.println("Its in the library: Item " + (i + 1));
+			if (((Book) catalogList.get(i)).getAuthor().equals(input))
+				System.out.println("It's in the library: Item " + (i + 1));
 		}
 	}
 	
 	public void searchID() {
-		System.out.print("Enter item ID to search:");
+		status = false;
+		System.out.print("Enter item ID to search: ");
 		input = keyboard.nextLine().toUpperCase();
 		for (int i = 0; i < catalogList.size(); i++) 
 		{
 			if (((Item) catalogList.get(i)).getID().equals(input)) 
 			{
-				System.out.println("Its in the library: Item " + (i + 1));
+				System.out.println("It's in the library: Item " + (i + 1));
 				status = true;
 			}
 		}
-		if (status = false)
-			System.out.println("Sorry, we don't have that item");
+		if (status == false)
+			System.out.println("Sorry, we don't have that item.");
 	}
 
 	public void checkOut() 
 	{
-		System.out.println("Enter the item number to check out:");
+		System.out.print("\nEnter the item number to check out: ");
 		userChoice= keyboard.nextInt();
 		((Book) catalogList.get(userChoice - 1)).setCheckedOut();
 		System.out.println("Done.");
@@ -78,7 +80,7 @@ public class User extends Library implements Serializable
 
 	public void returnItem() 
 	{
-		System.out.print("Enter the item number to return:");
+		System.out.print("\nEnter the item number to return: ");
 		
 		userChoice= keyboard.nextInt();
 		((Book)catalogList.get(userChoice- 1)).setReturned();
@@ -89,7 +91,7 @@ public class User extends Library implements Serializable
 		int c = 1;
 		System.out.println("Library Catalog Items: ");
 		for (Library i : Library.catalogList) {
-			System.out.println(c + "." + i);
+			System.out.println(c + ". " + i);
 			c++;
 		}
 	}

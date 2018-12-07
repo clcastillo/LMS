@@ -45,10 +45,10 @@ public class Book extends Item implements Serializable
 			isbn = keyboard.next();
 			isbnMatches= (isbn13.matcher(isbn).matches() || isbn10.matcher(isbn).matches());
 			if(!isbnMatches)
-				System.out.println("Please enter a valid ISBN10 or ISBN13 value, including dashes");
+				System.out.print("Please enter a valid ISBN10 or ISBN13 value, including dashes");
 		}while(!isbnMatches);
 
-		System.out.print("Checked Out: \n 1. Yes 2. No");
+		System.out.print("Checked Out (1. Yes 2. No): ");
 		chkout = checkedOut(keyboard.nextInt());
 		if (saveYorN()==1) 
 			addBook();
@@ -61,7 +61,7 @@ public class Book extends Item implements Serializable
 	 
 	public String toString() 
 	{	
-		return String.format("Book- ID: %6s, Title: %20s, Author: %20s, ISBN: %15s, Status: %15s",
+		return String.format("Book-  ID: %6s, Title: %20s, Author: %22s, ISBN: %16s, Status: %15s",
 				libID, title.substring(0, Math.min(title.length(), 20)), author.substring(0, Math.min(author.length(), 20)), isbn, chkout); 
 	}
 
