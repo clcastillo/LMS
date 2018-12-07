@@ -61,8 +61,8 @@ public class Book extends Item implements Serializable
 	 
 	public String toString() 
 	{	
-		return String.format("Book: Title: %20s, Author: %20s, ISBN: %15s, Status: %15s",
-				title.substring(0, Math.min(title.length(), 20)), author.substring(0, Math.min(author.length(), 20)), isbn, chkout); 
+		return String.format("Book- ID: %6s, Title: %20s, Author: %20s, ISBN: %15s, Status: %15s",
+				libID, title.substring(0, Math.min(title.length(), 20)), author.substring(0, Math.min(author.length(), 20)), isbn, chkout); 
 	}
 
 }
