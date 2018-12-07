@@ -36,21 +36,19 @@ class Main
 						userInstance.searchTitle();
 					else if (memberChoice == 2) 
 						userInstance.searchID();
-					else if (memberChoice == 3) 
-						userInstance.searchAuthor();
-					else if (memberChoice == 4) 
+					else if (memberChoice == 3)
 						userInstance.getItems();
-					else if (memberChoice == 5) 
+					else if (memberChoice == 4)
 					{
 						userInstance.getItems();
 						userInstance.checkOut();
 					}
-					else if (memberChoice == 6) 
+					else if (memberChoice == 5)
 					{
 						userInstance.getItems();
 						userInstance.returnItem();
 					}
-				} while (memberChoice != 7);
+				} while (memberChoice != 6);
 				libInstance.serialize();
 				System.out.println("Goodbye!");
 			} 

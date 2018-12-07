@@ -77,7 +77,7 @@ public class Admin extends Library implements Serializable
 	public void issuedItems() {
 		System.out.println("Issued Items: ");
 		for (int i = 0; i < catalogList.size(); i++) {
-			if (((Book) catalogList.get(i)).getCheckedStatus() == true) {
+			if (((Item) catalogList.get(i)).getCheckedStatus() == true) {
 				System.out.println(catalogList.get(i));
 			}
 		}

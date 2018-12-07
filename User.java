@@ -15,11 +15,10 @@ public class User extends Library implements Serializable
 			System.out.println("Following Functionalities are available: \n");
 			System.out.println("1- Search library by title");
 			System.out.println("2- Search library by library ID");
-			System.out.println("3- Search books by Author");
-			System.out.println("4- View all items");
-			System.out.println("5- Check out an item");
-			System.out.println("6- Return an item");
-			System.out.println("7- Logout");
+			System.out.println("3- View all items");
+			System.out.println("4- Check out an item");
+			System.out.println("5- Return an item");
+			System.out.println("6- Logout");
 			
 			System.out.println("---------------------------------------------");
 			userChoice = takeInput(0, 8);
@@ -43,16 +42,6 @@ public class User extends Library implements Serializable
 		if (status == false)
 			System.out.println("Sorry, we don't have that item.");
 	}
-
-	public void searchAuthor() {
-		System.out.print("Enter author to search: ");
-		input = keyboard.nextLine().toUpperCase();
-		for (int i = 0; i < catalogList.size(); i++) 
-		{
-			if (((Book) catalogList.get(i)).getAuthor().equals(input))
-				System.out.println("It's in the library: Item " + (i + 1));
-		}
-	}
 	
 	public void searchID() {
 		status = false;
@@ -74,7 +63,7 @@ public class User extends Library implements Serializable
 	{
 		System.out.print("\nEnter the item number to check out: ");
 		userChoice= keyboard.nextInt();
-		((Book) catalogList.get(userChoice - 1)).setCheckedOut();
+		((Item) catalogList.get(userChoice - 1)).setCheckedOut();
 		System.out.println("Done.");
 	}
 
@@ -83,7 +72,7 @@ public class User extends Library implements Serializable
 		System.out.print("\nEnter the item number to return: ");
 		
 		userChoice= keyboard.nextInt();
-		((Book)catalogList.get(userChoice- 1)).setReturned();
+		((Item)catalogList.get(userChoice- 1)).setReturned();
 		System.out.println("Done.");
 	}
 
