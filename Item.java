@@ -23,19 +23,19 @@ public abstract class Item extends LibraryCat implements Serializable
 	}
 
 	public void setCheckedOut() {
-		if (chkout == "Checked Out") {
+		if (chkout == "Checked out") {
 			System.out.println("This item is already checked out");
 		} else {
-			chkout = "Checked Out";
+			chkout = "Checked out";
 		}
 	}
 
 	public void setReturned() {
-		this.chkout = "Not checked Out";
+		this.chkout = "Not checked out";
 	}
 	public boolean getCheckedStatus() 
 	{
-		if (chkout.equals("Checked Out")) 
+		if (chkout.equals("Checked out"))
 			return true;
 		else
 			return false;

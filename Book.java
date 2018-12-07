@@ -48,7 +48,7 @@ public class Book extends Item implements Serializable
 					+ "Example: 0-940016-64-8 or 978-0-940016-64-4 17\n");
 		}while(!isbnMatches);
 
-		System.out.print("Checked Out (1. Yes 2. No): ");
+		System.out.print("Checked out (1. Yes 2. No): ");
 		chkout = checkedOut(keyboard.nextInt());
 		if (saveYorN()==1) 
 			addBook();

@@ -37,7 +37,7 @@ public class Movie extends Item implements Serializable
 		System.out.print("Genre: ");
 		genre = keyboard.nextLine().toUpperCase();
 		
-		System.out.print("Checked Out (1. Yes 2. No): ");
+		System.out.print("Checked out (1. Yes 2. No): ");
 		chkout = checkedOut(keyboard.nextInt());
 		if (saveYorN()==1) 
 			addMovie();

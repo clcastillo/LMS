@@ -13,12 +13,12 @@ public class Admin extends Library implements Serializable
 
 	public int prompt() {
 		System.out.println();
-		System.out.println("Following Functionalities are available: \n");
+		System.out.println("Following functionalities are available: \n");
 
-		System.out.println("1- Add Item");
-		System.out.println("2- Delete Item");
-		System.out.println("3- View Issued Items History");
-		System.out.println("4- View All Items in Library");
+		System.out.println("1- Add item");
+		System.out.println("2- Delete item");
+		System.out.println("3- View issued items history");
+		System.out.println("4- View all items in library");
 		System.out.println("5- Logout");
 		System.out.println("---------------------------------------------");
 		choice = takeInput(0, 6);
@@ -37,10 +37,10 @@ public class Admin extends Library implements Serializable
 	}
 
 	public void addItem() {
-		System.out.println("1- Add Book");
-		System.out.println("2- Add Movie");
+		System.out.println("1- Add book");
+		System.out.println("2- Add movie");
 		System.out.println("---------------------------------------------");
-		System.out.print("Enter Choice: ");
+		System.out.print("Enter choice: ");
 		choice = keyboard.nextInt();
 
 		if (choice == 1) {

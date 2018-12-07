@@ -81,9 +81,9 @@ public class Library implements Serializable, Comparable<Library> {
 	public static String checkedOut(int choice) 
 	{
 		if (choice == 1)
-			return "Checked Out";
+			return "Checked out";
 		else if (choice == 2)
-			return "Not checked Out";
+			return "Not checked out";
 		else
 			return "Invalid";
 	}

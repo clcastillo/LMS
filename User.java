@@ -12,7 +12,7 @@ public class User extends Library implements Serializable
 	public int prompt() {
 		do {
 			System.out.println();
-			System.out.println("Following Functionalities are available: \n");
+			System.out.println("Following functionalities are available: \n");
 			System.out.println("1- Search library by title");
 			System.out.println("2- Search library by library ID");
 			System.out.println("3- View all items");

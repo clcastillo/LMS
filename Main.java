@@ -13,9 +13,9 @@ class Main
 			System.out.println("--------------------------------------------------------");
 			System.out.println("\tWelcome to Library Management System");
 			System.out.println("--------------------------------------------------------");
-			System.out.println("Following Functionalities are available: \n");
-			System.out.println("1- User Login");
-			System.out.println("2- Admin Login ");
+			System.out.println("Following functionalities are available: \n");
+			System.out.println("1- User login");
+			System.out.println("2- Admin login ");
 			System.out.println("3- Exit");
 			System.out.println("-----------------------------------------\n");
 			
@@ -100,7 +100,7 @@ class Main
 
 		while (true) 
 		{
-			System.out.print("\nEnter Choice: ");
+			System.out.print("\nEnter choice: ");
 			choice = input.next();
 			if ((!choice.matches(".*[a-zA-Z]+.*"))
 					&& (Integer.parseInt(choice) > min && Integer.parseInt(choice) < max)) 
@@ -108,7 +108,7 @@ class Main
 			
 
 			else
-				System.out.println("\nInvalid Input.");
+				System.out.println("\nInvalid input.");
 		}
 	}
 }
