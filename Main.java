@@ -37,20 +37,22 @@ class Main //implements Serializable
 					if (memberChoice == 1) 
 						userInstance.searchTitle();// Search an Item
 					else if (memberChoice == 2) 
-						userInstance.searchAuthor();// Search for an Author
+						userInstance.searchID();
 					else if (memberChoice == 3) 
-						userInstance.getItems();// All books
+						userInstance.searchAuthor();// Search for an Author
 					else if (memberChoice == 4) 
+						userInstance.getItems();// All books
+					else if (memberChoice == 5) 
 					{
 						userInstance.getItems();
 						userInstance.checkOut();// Check out an item
 					}
-					else if (memberChoice == 5) 
+					else if (memberChoice == 6) 
 					{
 						userInstance.getItems();
 						userInstance.returnItem();// Return a book
 					}
-				} while (memberChoice != 6);
+				} while (memberChoice != 7);
 				libInstance.serialize();
 				System.out.println("Goodbye!");
 			} 
